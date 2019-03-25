@@ -1,0 +1,14 @@
+# import libraries
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import urllib.request 
+import re
+import os
+
+#insert https below
+html = urlopen('https://www.google.com.sg/search?rlz=1C1CHBD_enSG841SG841&q=beef+pictures&tbm=isch&source=univ&sa=X&ved=2ahUKEwjZyIuvn5zhAhWaSH0KHZAAByYQsAR6BAgHEAE&biw=1920&bih=969')
+bs = BeautifulSoup(html, 'html.parser')
+images = bs.find_all('img', {'src':re.compile('.jpg')})
+for image in images: 
+    print(image['src']+'\n')          # print urls of images
+    urllib.request.urlretrieve(image['src'],os.path.basename(image['src']))         #download them
