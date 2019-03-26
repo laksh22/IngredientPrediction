@@ -1,0 +1,24 @@
+# import libraries
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import urllib.request 
+import re
+import os
+import sys
+
+
+#insert https below
+html = urlopen('https://www.veer.com/query/image/?phrase=%E8%A5%BF%E7%93%9C&key=PTQ5RDNMFD030CS2MP36')
+bs = BeautifulSoup(html, 'html.parser')
+images = bs.find_all('img', {'src':re.compile('.jpg')})
+for image in images: 
+    print(image['src']+'\n')          # print urls of images
+    filename = image['src'].split('/')[-1]
+    def _progress(block_num, block_size, total_size):
+      percent = float(block_num * block_size) / float(total_size)
+      if(percent>1):
+        percent = 1.0
+      sys.stdout.write('\r>> Downloading %s %.1f%%' % (filename,percent * 100.0))
+      sys.stdout.flush()
+    filepath, _ = urllib.request.urlretrieve(image['src'],os.path.basename(image['src']),_progress)         #download them
+    print()
