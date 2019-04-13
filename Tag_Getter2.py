@@ -19,19 +19,19 @@ def detect_labels(path):
        tag_list.append(label.description)
     return(tag_list)
 
+def finalprint(path):
+    tag_list=detect_labels(path)
+    #index 1 stores presence of Spaghetti, 2nd stores beans, 3rd stores naan
+    main_list=[0,0,0]
+    for i in tag_list:
+        if( i == 'Spaghetti'):
+            main_list[0]=1
+        if( i== 'Bean'):
+            main_list[1]=1
+        if( i == 'Naan'):
+            main_list[2]=1
+    return(main_list)
 
-tag_list=detect_labels("/Users/vivekadrakatti/Downloads/naan-202-320x320-1.jpg")
-#index 1 stores presence of Spaghetti, 2nd stores beans, 3rd stores naan
-main_list=[0,0,0]
-for i in tag_list:
-    if( i == 'Spaghetti'):
-        main_list[0]=1
-    if( i== 'Bean'):
-        main_list[1]=1
-    if( i == 'Naan'):
-        main_list[2]=1
-
-print(main_list)
 
 
 
