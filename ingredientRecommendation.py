@@ -32,11 +32,11 @@ def Ingredient_reco(path):
     ingredient_list=[]
     ingredient_list=GCV.finalprint(path)
     if(ingredient_list[0]==1):
-        result_ings, ing_scores = display_most_similar('spaghetti', 5)
+        result_ings, ing_scores = display_most_similar('spaghetti', 8)
         return result_ings
     elif(ingredient_list[1]==1):
-        result_ings, ing_scores = display_most_similar('beans', 5)
+        result_ings, ing_scores = display_most_similar('beans', 8)
         return result_ings
     else:
-        result_ings, ing_scores = display_most_similar('naan', 5)
+        result_ings, ing_scores = display_most_similar('naan', 8)
         return result_ings

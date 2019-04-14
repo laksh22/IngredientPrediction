@@ -2,6 +2,8 @@ from telegram.ext import Updater, MessageHandler, Filters
 import urllib
 import wget
 import ingredientRecommendation
+import cuisineRecommendation
+import numpy as np
 
 
 #To Make List of Numbers into an int
@@ -33,9 +35,17 @@ def echo(bot, update):
     file_url = (file.file_path)
     file_name = wget.download(file_url)
     x=[]
+
     x=ingredientRecommendation.Ingredient_reco(file_name)
-    print(x)
-    bot.send_message(chat_id=update.message.chat_id, text="Here's a few ingredients that could go with that:")
+    y=cuisineRecommendation.cuisine_recommend(file_name)
+
+    print(type(y))
+    ts = y.tolist()
+    cuisine=""
+    cuisine="Predicted Cuisine: "+ts[0]
+    bot.send_message(chat_id=update.message.chat_id, text=cuisine)
+    cuisine="Here's a few "+ts[0]+" ingredients that could go with that:"
+    bot.send_message(chat_id=update.message.chat_id, text=cuisine)
     for i in x:
         bot.send_message(chat_id=update.message.chat_id, text=i)
 
