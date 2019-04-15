@@ -2,9 +2,9 @@
 import pandas as pd  # Data manipulation
 import numpy as np  # Array and Matrix operations
 from sklearn.externals import joblib  # To import custom models
-cv = joblib.load('cuisine_count_vectorizer.pkl')
-logistic = joblib.load('cuisine_logistic_model.pkl')
-enc = joblib.load('cuisine_label_encoder.pkl')
+cv = joblib.load('models/cuisine_count_vectorizer.pkl')
+logistic = joblib.load('models/cuisine_logistic_model.pkl')
+enc = joblib.load('models/cuisine_label_encoder.pkl')
 
 
 def predict_cuisine(ingredients):

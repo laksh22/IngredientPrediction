@@ -3,9 +3,9 @@ import pandas as pd  # Data manipulation
 import numpy as np  # Array and Matrix operations
 from sklearn.externals import joblib  # To import custom models
 from sklearn.metrics.pairwise import cosine_similarity
-key_to_row = joblib.load('ingredient_key_to_row.pkl')
-factors = joblib.load('ingredient_factors.pkl')
-row_keys = joblib.load('ingredient_row_keys.pkl')
+key_to_row = joblib.load('models/ingredient_key_to_row.pkl')
+factors = joblib.load('models/ingredient_factors.pkl')
+row_keys = joblib.load('models/ingredient_row_keys.pkl')
 
 
 def most_similar(ingredient, topn=10):
